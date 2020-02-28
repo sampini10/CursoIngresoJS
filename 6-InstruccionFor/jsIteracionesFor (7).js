@@ -11,4 +11,4 @@ function mostrar() {
 
     }
 console.log("Cantidad de divisores encontrados: "+ contadorDivisor);
-}//FIN DE LA FUNCIÓN
+}//

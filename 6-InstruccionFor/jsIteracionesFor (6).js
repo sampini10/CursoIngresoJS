@@ -7,7 +7,6 @@ function mostrar() {
     }
     for (var i = 1; i <= numero; i++) {
         if (i % 2 == 0) {
-          //aca solo se entra cuando i tiene un valor par
             console.log(i);
             contadorPares++;
         }

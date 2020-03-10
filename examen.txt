@@ -1,0 +1,74 @@
+function mostrar() {
+    var nombre;
+    var edad;
+    var sexo;
+    var estadoCivil;
+    var contadorViu = 0;
+    var edadMenor;
+    var edadMayor;
+    var sexoMayor;
+    var nombreMayor;
+    var contadorFem = 0;
+    var contadorSol = 0;
+    var acumuladorMujer = 0;
+    var acumuladorSoltero = 0;
+    var promedioMujeres;
+    var promedioSolteros;
+    var flag = 0;
+    do {
+
+        nombre = prompt("Ingrese nombre");
+        while (!(isNaN(nombre))) {
+            nombre = prompt("No es valido");
+        }
+        edad = parseInt(prompt("Ingrese edad"));
+        while (edad < "18" || isNaN(edad)) {
+            edad = parseInt(prompt("No es valida"));
+        }
+        sexo = prompt("Ingrese sexo");
+        while (sexo != "f" && sexo != "m") {
+            sexo = prompt("No es valido");
+        }
+        estadoCivil = prompt("ingrese estado civil");
+        while (estadoCivil != "soltero" && estadoCivil != "casado" && estadoCivil != "viudo") {
+            estadoCivil = prompt("no es valido")
+        }
+
+        if ((estadoCivil == "casado" || estadoCivil == "viudo") && sexo == "f") {
+            contadorViu++;
+        }
+        if (flag == 0 || edad < edadMenor && sexo == "m" && estadoCivil == "casado") {
+            edadMenor = edad
+            // si tengo que usar varios flag, se pone el flag = 1 en el ultimo de los flag que se utiliza
+        }
+        if (flag == 0 || edad > edadMayor) {
+            edadMayor = edad
+            sexoMayor = sexo
+            nombreMayor = nombre
+            flag = 1;
+        }
+        if (sexo == "f") {
+            contadorFem++;
+        }
+        if (sexo == "m" && estadoCivil == "soltero") {
+            contadorSol++;
+        }
+        if (sexo == "f") {
+            acumuladorMujer = acumuladorMujer + edad;
+        }
+        if (sexo == "m" && estadoCivil == "soltero") {
+            acumuladorSoltero = acumuladorSoltero + edad;
+        }
+
+
+        seguir = prompt("desea continuar?");
+    } while (seguir == "s");
+    promedioMujeres = acumuladorMujer / contadorFem
+    promedioSolteros = acumuladorSoltero / contadorSol
+
+    document.write("Hombre casado mas joven :" + edadMenor + "</br>");
+    document.write("sexo y hombre del pasajero mas viejo: " + edadMayor  +  sexoMayor  +  nombreMayor  + "</br>");
+    document.write(" Mujeres viudad y casadas: " + contadorViu + "</br>");
+    document.write("promedio de edad de mujeres: " + promedioMujeres + "</br>");
+    document.write("promedio de hombres solteros: " + promedioSolteros + "</br>");
+}
